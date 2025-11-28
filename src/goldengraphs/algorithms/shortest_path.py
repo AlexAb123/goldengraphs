@@ -1,6 +1,8 @@
 from heapq import heappop, heappush
 from typing import Callable, Iterable, TypeVar
 
+from .utils import reconstruct_path
+
 Node = TypeVar("Node")
 
 
@@ -135,16 +137,3 @@ def a_star(
                 parent[adj] = curr
 
     return ([], float("inf"))
-
-
-def reconstruct_path(
-    source: Node,
-    target: Node,
-    parent: dict[Node, Node],
-) -> list[Node]:
-    curr = target
-    path = [curr]
-    while curr != source:
-        curr = parent[curr]
-        path.append(curr)
-    return path[::-1]
