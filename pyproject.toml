@@ -7,7 +7,7 @@ name = "goldengraphs"
 version = "0.1.0"
 description = "Graph algorithms and visualization tools"
 readme = "README.md"
-requires-python = ">=3.10"
+requires-python = ">=3.14"
 dependencies = []
 
 [dependency-groups]
