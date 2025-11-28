@@ -6,18 +6,18 @@ Node = TypeVar("Node")
 
 def dijkstra(
     source: Node,
-    target: Node,
+    is_goal: Callable[[Node, float], bool],
     adjs: Callable[[Node], Iterable[tuple[Node, float]]],
 ) -> tuple[list[Node], float]:
     """Run Dijkstra's shortest path algorithm.
 
     Args:
         source: Starting node
-        target: Goal node
+        is_goal: Function that returns True if a node is the goal (takes node and distance)
         adjs: Function that yields (neighbor, distance) tuples for a given node
 
     Returns:
-        Tuple of (path from source to target, distance from source to target)
+        Tuple of (path from source to goal, distance from source to goal)
 
     """
     start = source
@@ -33,8 +33,8 @@ def dijkstra(
             continue
         visited.add(curr)
 
-        if curr == target:
-            return (reconstruct_path(source, target, parent), dists[target])
+        if is_goal(curr, dists[curr]):
+            return (reconstruct_path(source, curr, parent), dists[curr])
 
         for adj, adj_dist in adjs(curr):
             dist = dists[curr] + adj_dist
@@ -89,7 +89,7 @@ def dijkstra_all_paths(
 
 def a_star(
     source: Node,
-    target: Node,
+    is_goal: Callable[[Node, float], bool],
     adjs: Callable[[Node], Iterable[tuple[Node, float]]],
     h: Callable[[Node], float],
 ) -> tuple[list[Node], float]:
@@ -97,13 +97,13 @@ def a_star(
 
     Args:
         source: Starting node
-        target: Goal node
+        is_goal: Function that returns True if a node is the goal (takes node and distance)
         adjs: Function that yields (neighbor, distance) tuples for a given node
-        h: Heuristic function estimating distance from a node to the target.
-        Must never overstimate the actual distance.
+        h: Heuristic function estimating distance from a node to the goal.
+        Must never overestimate the actual distance.
 
     Returns:
-        Tuple of (path from source to target, distance from source to target)
+        Tuple of (path from source to goal, distance from source to goal)
 
     """
     start = source
@@ -119,8 +119,8 @@ def a_star(
             continue
         visited.add(curr)
 
-        if curr == target:
-            return (reconstruct_path(source, target, parent), dists[target])
+        if is_goal(curr, dists[curr]):
+            return (reconstruct_path(source, curr, parent), dists[curr])
 
         for adj, adj_dist in adjs(curr):
             dist = dists[curr] + adj_dist
