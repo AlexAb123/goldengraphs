@@ -87,6 +87,10 @@ def dijkstra_all_paths(
     return dists, parent
 
 
+# TODO: multi_dijkstra that takes in a list of nodes (waypoints)
+# and finds shortest path from a to b that goes through each waypoint
+
+
 def a_star(
     source: Node,
     is_goal: Callable[[Node, float], bool],
