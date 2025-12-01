@@ -1,1 +1,1 @@
-from goldengraphs.algorithms.algorithms import a_star, dijkstra, dijkstra_all_paths
+from goldengraphs.algorithms import a_star, dijkstra, dijkstra_all_paths

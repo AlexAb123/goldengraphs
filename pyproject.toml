@@ -8,17 +8,21 @@ version = "0.1.0"
 description = "Graph algorithms and visualization tools"
 readme = "README.md"
 requires-python = ">=3.14"
-dependencies = []
+dependencies = ["textual>=6.7.0"]
 
 [dependency-groups]
-dev = ["pytest>=9.0.1", "ruff>=0.14.6"]
+dev = [
+ "mkdocs-material>=9.7.0",
+ "pytest>=9.0.1",
+ "ruff>=0.14.6",
+]
 
 [tool.ruff]
 line-length = 120
 
 [tool.ruff.lint]
 select = ["ALL"]
-ignore = ["UP", "D", "INP", "S", "PLR", "F", "FIX", "TC"]
+ignore = ["UP", "D", "INP", "S", "PLR", "F", "FIX", "TC", "FBT", "RUF"]
 
 [tool.ruff.per-file-ignores]
 "__init__.py" = ["F401"]
