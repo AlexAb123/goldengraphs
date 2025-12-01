@@ -15,4 +15,3 @@ class GoldengraphsApp(App[str]):
 if __name__ == "__main__":
     app = GoldengraphsApp()
     reply = app.run()
-    print(reply)
