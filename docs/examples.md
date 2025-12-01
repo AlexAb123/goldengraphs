@@ -2,7 +2,7 @@ Examples:
 
 
 **Python Example:**
-```
+``` python
 # Hello world function
 def hello_world():
     print("Hello, World!")
