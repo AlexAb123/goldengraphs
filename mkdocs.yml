@@ -1,5 +1,7 @@
 site_name: Goldengraphs Docs
 site_url: https://alexab123.github.io/goldengraphs/
+repo_url: https://github.com/alexab123/goldengraphs
+repo_name: Goldengraphs
 theme:
   name: material
   palette:
